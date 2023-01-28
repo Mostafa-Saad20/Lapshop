@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Lapshop.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+</section>
+<!-- End Banner Area -->
+
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <h4>My Cart</h4>
+            <hr />
+            <!-- Cart items -->
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Single Item -->
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            @if (item.LaptopId != null)
+							                {
+								                <img class="img-fluid" src="~/Images/Upload/LaptopImages/@item.LaptopId/@item.Image" alt="" style="height: 100px; width: 110px">
+							                }
+							                else
+							                {
+								                <img class="img-fluid" src="~/Images/Upload/AccessoryImages/@item.AccessoryId/@item.Image" alt="" style="height: 100px; width: 110px">
+							                }
+                                        </div>
+                                        <div class="media-body">
+                                            <p>@item.Name</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>LE @item.Price</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <input type="text" name="qty" id="@item.Id" maxlength="4" value="@item.Quantity" title="Quantity"
+                                               class="input-text qty">
+                                        <a href="~/Cart/IncrementQuantity?id=@item.Id"
+                                                class="increase items-count" type="button">
+                                            <i class="lnr lnr-chevron-up"></i>
+                                        </a>
+                                        <a href="~/Cart/DecrementQuantity?id=@item.Id"
+                                                class="reduced items-count" type="button">
+                                            <i class="lnr lnr-chevron-down"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>LE @(item.Price * item.Quantity)</h5>
+                                </td>
+                                <td>
+                                    <a href="~/Cart/Delete?id=@item.Id">
+                                        <h4 class="text-danger"><i class="lnr lnr-trash"></i></h4>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Cart items -->
+
+            <hr />
+            <div class="row pl-5">
+                <div class="col-md-3 mt-3">
+                    <h4>
+                        Total:
+                        <span class="text-success ml-2"> @ViewBag.Total EGP</span>
+                    </h4>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <div class="checkout_btn_inner">
+                        <a class="primary-btn" href="~/Orders/Create">Proceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->

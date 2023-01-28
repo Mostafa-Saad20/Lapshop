@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h3>Admin Dashboard</h3>
+<hr />
+
+<div class="grid">
+    <div class="row mt-3">
+        <!-- Statistics Item -->
+        <div class="cell-4 px-2 mb-3">
+            <div class="more-info-box bg-green fg-white">
+                <div class="content">
+                    <h2 class="text-bold mb-0">@ViewBag.regCustomers</h2>
+                    <div>Registered Customer</div>
+                </div>
+                <div class="icon">
+                    <span class="mif-user"></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Statistics Item -->
+        <!-- Statistics Item -->
+        <div class="cell-4 px-2">
+            <div class="more-info-box bg-orange fg-white">
+                <div class="content">
+                    <h2 class="text-bold mb-0">@ViewBag.todayOrders</h2>
+                    <div>Today's Orders</div>
+                </div>
+                <div class="icon">
+                    <span class="mif-alarm"></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Statistics Item -->
+        <!-- Statistics Item -->
+        <div class="cell-4 px-2">
+            <div class="more-info-box bg-blue fg-white">
+                <div class="content">
+                    <h2 class="text-bold mb-0">@ViewBag.totalOrders</h2>
+                    <div>Total Orders</div>
+                </div>
+                <div class="icon">
+                    <span class="mif-alarm-on"></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Statistics Item -->
+        <!-- Statistics Item -->
+        <div class="cell-4 px-2">
+            <div class="more-info-box fg-white" style="background-color:cornflowerblue">
+                <div class="content">
+                    <h2 class="text-bold mb-0">@ViewBag.lapsAvailable</h2>
+                    <div>Laptops available</div>
+                </div>
+                <div class="icon">
+                    <span class="mif-laptop"></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Statistics Item -->
+        <!-- Statistics Item -->
+        <div class="cell-4 px-2">
+            <div class="more-info-box fg-white" style="background-color:mediumslateblue">
+                <div class="content">
+                    <h2 class="text-bold mb-0">@ViewBag.accAvailable</h2>
+                    <div>Accessories available</div>
+                </div>
+                <div class="icon">
+                    <span class="mif-devices"></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Statistics Item -->
+        <!-- Statistics Item -->
+        <div class="cell-4 px-2">
+            <div class="more-info-box fg-white" style="background-color:darkgrey">
+                <div class="content">
+                    <h2 class="text-bold mb-0">@ViewBag.feedback</h2>
+                    <div>Customers Feedback</div>
+                </div>
+                <div class="icon">
+                    <span class="mif-envelop"></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Statistics Item -->
+    </div>
+</div>

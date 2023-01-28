@@ -1,0 +1,236 @@
+﻿@model IEnumerable<Lapshop.Models.Comparison>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+</section>
+<!-- End Banner Area -->
+
+<!--================ Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+		<h3>Comparison List</h3>
+
+		<p class="text-success">You can add 3 items maximum!</p>
+		
+		<hr>
+        <div class="cart_inner">
+
+			@if (Model != null)
+			{
+				<!-- Cart items -->
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<td></td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h4>@item.Name</h4>
+										<a href="~/Comparison/RemoveFromComparison?id=@item.Id">Remove</a>
+									</td>
+								}
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<h5>Image</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<img src="~/Images/Upload/LaptopImages/@item.LaptopId/@item.Image" width="150" height="100">
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>RAM</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.RAMSize GB</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>RAM Type</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.RAMType </h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>Processor</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.ProcessorBrand @item.ProcessorType</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>CPU Max Speed</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.CPU GHz</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>Hard Disk</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.HDD</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>SSD Available</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.HasSSD</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>SSD </h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										@if (item.HasSSD)
+										{
+											<h5>@item.SSD GB</h5>
+										}
+										else
+										{
+											<h5>-</h5>
+										}
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>GPU Brand</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.GPUBrand</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>GPU Size</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.GPU GB</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>Display</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.DisplaySize inch</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>Operating System</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.OS</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>Width</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.Width cm</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>Length</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.Length cm</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>Weight</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.Weight kgm</h5>
+									</td>
+								}
+							</tr>
+							<tr>
+								<td>
+									<h5>Colour</h5>
+								</td>
+								@foreach (var item in Model)
+								{
+									<td>
+										<h5>@item.Color</h5>
+									</td>
+								}
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			}
+			else
+			{
+				<h4>@ViewBag.EmptyList</h4>
+			}
+			
+		</div>
+    </div>
+</section>
+<!--================End Cart Area =================-->

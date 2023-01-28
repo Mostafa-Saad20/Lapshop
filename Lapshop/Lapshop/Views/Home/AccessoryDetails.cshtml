@@ -1,0 +1,279 @@
+﻿@model Lapshop.Models.Accessory
+
+@{
+	ViewData["Title"] = "LaptopDetails";
+	Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+</section>
+<!-- End Banner Area -->
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+	<div class="container">
+		<div class="row s_product_inner">
+			<div class="col-lg-6">
+				<!-- Product Images -->
+				<div class="s_Product_carousel">
+					<img class="img-fluid active" src="~/Images/Upload/AccessoryImages/@Model.Id/@Model.Image" alt="">
+					@foreach (var image in ViewBag.AccessoryImages)
+					{
+						<div class="single-prd-item">
+							<img class="img-fluid" src="~/Images/Upload/AccessoryImages/@Model.Id/@image.ImageName" alt="">
+						</div>
+					}
+
+				</div>
+			</div>
+
+			<div class="col-lg-5 offset-lg-1">
+				<div class="s_product_text">
+					<h3>@Model.Name</h3>
+					<h2>LE @Model.Price</h2>
+					<ul class="list">
+						<li><a class="active" href="#"><span>Category</span> : @Model.Category.Name</a></li>
+					</ul>
+					<p>
+						@if (Model.Description.Length > 400)
+						{
+							@Model.Description.Remove(300)
+
+						}
+						else
+						{
+							@Model.Description
+						}
+					</p>
+					<div class="product_count">
+						<label for="qty">Quantity:</label>
+						<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+						<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+								class="increase items-count" type="button">
+							<i class="lnr lnr-chevron-up"></i>
+						</button>
+						<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+								class="reduced items-count" type="button">
+							<i class="lnr lnr-chevron-down"></i>
+						</button>
+					</div>
+					<div class="card_area d-flex align-items-center">
+						<button onclick="AddAccessoryToCart(@Model.Id)" class="primary-btn">Add to Cart</button>
+						<a class="icon_btn" href="~/WhishList/AddAccessory/@Model.Id"><i class="lnr lnr lnr-heart"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--================End Single Product Area =================-->
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+	<div class="container">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+				   aria-selected="false">
+					Description
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+				   aria-selected="true">
+					Specification
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+				   aria-selected="false">
+					Reviews
+				</a>
+			</li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<!-- Description -->
+			<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+				<p>
+					@Model.Description
+				</p>
+			</div>
+
+			<!-- Specification -->
+			<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+				<div class="table-responsive">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td>
+									Name
+								</td>
+								<td>
+									<h5>@Model.Name</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Seller Name</h5>
+								</td>
+								<td>
+									<h5>@Model.Seller.FirstName @Model.Seller.LastName</h5>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h5>Published At</h5>
+								</td>
+								<td>
+									<h5>@Model.SoldAt</h5>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- Reviews -->
+			<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="row total_rate">
+							<!-- Overall Rating -->
+							<div class="col-6">
+								<div class="box_total">
+									<h5>Overall</h5>
+									<h4>@ViewBag.OverallRating</h4>
+									<h6>(@ViewBag.Reviews.Count Reviews)</h6>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="rating_list">
+									<!-- Rating inforamtion -->
+									<h3>Based on @ViewBag.Reviews.Count Reviews</h3>
+									<ul class="list">
+										<li>
+											<a href="#">
+												<input name="Rate" data-role="rating" data-value=5 data-star-color="cyan" data-stared-color="orange" disabled>
+												@ViewBag.FiveStarsCount
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<input name="Rate" data-role="rating" data-value=4 data-star-color="cyan" data-stared-color="orange" disabled>
+												@ViewBag.FourStarsCount
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<input name="Rate" data-role="rating" data-value=3 data-star-color="cyan" data-stared-color="orange" disabled>
+												@ViewBag.ThreeStarsCount
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<input name="Rate" data-role="rating" data-value=2 data-star-color="cyan" data-stared-color="orange" disabled>
+												@ViewBag.TwoStarsCount
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<input name="Rate" data-role="rating" data-value=1 data-star-color="cyan" data-stared-color="orange" disabled>
+												@ViewBag.OneStarCount
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="review_list">
+							<!-- Review Item -->
+							@foreach (var review in ViewBag.Reviews)
+							{
+								<div class="review_item">
+									<div class="media">
+										<div class="d-flex">
+											<img src="~/Images/img/product/icons8-user-70.png" alt="">
+										</div>
+										<div class="media-body">
+											<h4>@review.CustomerName</h4>
+											<input name="Rate" data-role="rating" data-value=@review.Rate data-star-color="cyan" data-stared-color="orange" disabled>
+										</div>
+									</div>
+									<p class="ml-3">
+										@review.Comment
+									</p>
+								</div>
+							}
+							<!--End Review item-->
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="review_box">
+							<h4>Add a Review</h4>
+							<!-- Review Form -->
+							<form class="row contact_form" asp-action="AccessoryDetails" asp-controller="Home" method="post" id="contactForm">
+								<div class="col-md-12">
+									<div class="form-group">
+										<p>Your Rating:</p>
+										<input name="Rate" data-role="rating" data-values="1, 2, 3, 4, 5" data-star-color="cyan" data-stared-color="orange" required>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="text" class="form-control" id="name" name="CustomerName" placeholder="Your Full name" required>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="email" class="form-control" id="email" name="CustomerEmail" placeholder="Email Address" required>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<textarea class="form-control" name="Comment" id="message" rows="1" placeholder="Write your Review .." required></textarea>
+									</div>
+								</div>
+								<div class="col-md-12 text-right">
+									<button type="submit" value="submit" class="primary-btn">Submit Now</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--================End Product Description Area =================-->
+<!-- Start related-product Area -->
+<section class="related-product-area section_gap_bottom">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 text-center">
+				<div class="section-title">
+					<h2>Related products</h2>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="row">
+					<!-- Product Item -->
+					<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+						<div class="single-related-product d-flex">
+							<a href="#"><img src="img/r1.jpg" alt=""></a>
+							<div class="desc">
+								<a href="#" class="title">Black lace Heels</a>
+								<div class="price">
+									<h6>$189.00</h6>
+									<h6 class="l-through">$210.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End related-product Area -->

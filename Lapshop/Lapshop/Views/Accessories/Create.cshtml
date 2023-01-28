@@ -1,0 +1,56 @@
+﻿@model Lapshop.Models.Accessory
+
+@{
+    ViewData["Title"] = "Sell New Accessory";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+
+<h4>Enter Accessory Information</h4>
+<hr />
+
+<div class="row px-5">
+    <div class="col-md-12">
+        <form asp-action="Create" asp-controller="Accessories" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control mt-2 mb-3" asp-items="ViewBag.CategoryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrandId" class="control-label"></label>
+                <select asp-for="BrandId" class="form-control mt-2 mb-3" asp-items="ViewBag.BrandId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control mt-2 mb-3" placeholder="DELL - Inspiron - XXX" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control mt-2 mb-3" placeholder="write about laptop specifications .."></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Images" class="control-label"></label>
+                <input asp-for="Images" class="form-control mt-2 mb-3" type="file" multiple>
+                <span asp-validation-for="Images" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+                        
+            <div class="form-group">
+                <input type="submit" value="Sell Now" class="btn btn-primary mt-2 mb-3" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

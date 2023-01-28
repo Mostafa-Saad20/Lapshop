@@ -1,0 +1,56 @@
+﻿@model Lapshop.Models.Seller
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+<h4>
+    <i class="bi bi-speedometer2"></i>
+    Dashboard
+</h4>
+<hr />
+
+<h5>Welcome, @ViewBag.SellerName 😀 </h5>
+<div class="row mt-3 px-5">
+    <!-- Statistics Item -->
+    <div class="col-md-4 py-3">
+        <div class="bg-success" style="width:320px">
+            <div class="card-body">
+                <h5 class="card-text text-light">Sold Laptops</h5>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#FFFF" class="bi bi-laptop" viewBox="0 0 16 16">
+                            <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z" />
+                        </svg>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="mt-2 text-light">@ViewBag.SoldLaptops</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Statistics Item -->
+    <!-- Statistics Item -->
+    <div class="col-md-4 py-3">
+        <div class="bg-primary" style="width:320px">
+            <div class="card-body">
+                <h5 class="card-text text-light">Sold Accessories</h5>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#FFFF" class="bi bi-earbuds" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M6.825 4.138c.596 2.141-.36 3.593-2.389 4.117a4.432 4.432 0 0 1-2.018.054c-.048-.01.9 2.778 1.522 4.61l.41 1.205a.52.52 0 0 1-.346.659l-.593.19a.548.548 0 0 1-.69-.34L.184 6.99c-.696-2.137.662-4.309 2.564-4.8 2.029-.523 3.402 0 4.076 1.948zm-.868 2.221c.43-.112.561-.993.292-1.969-.269-.975-.836-1.675-1.266-1.563-.43.112-.561.994-.292 1.969.269.975.836 1.675 1.266 1.563zm3.218-2.221c-.596 2.141.36 3.593 2.389 4.117a4.434 4.434 0 0 0 2.018.054c.048-.01-.9 2.778-1.522 4.61l-.41 1.205a.52.52 0 0 0 .346.659l.593.19c.289.092.6-.06.69-.34l2.536-7.643c.696-2.137-.662-4.309-2.564-4.8-2.029-.523-3.402 0-4.076 1.948zm.868 2.221c-.43-.112-.561-.993-.292-1.969.269-.975.836-1.675 1.266-1.563.43.112.561.994.292 1.969-.269.975-.836 1.675-1.266 1.563z"/>
+                        </svg>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="mt-2 text-light">@ViewBag.SoldAccessories</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Statistics Item -->
+</div>

@@ -1,0 +1,65 @@
+﻿@model Lapshop.Models.SellerLogin
+
+@{
+    ViewData["Title"] = "Login";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Lapshop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Lapshop.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="container">
+        <main role="main" class="pb-3 mt-5">
+            <h3>Seller Login</h3>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Login">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control mt-2" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <p class="text-danger">@ViewBag.ErrorLoginEmail</p>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control mt-2" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <p class="text-danger">@ViewBag.ErrorLoginPass</p>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn btn-primary mt-2 mb-3" />
+                        </div>
+                    </form>
+
+                    <div>
+                        <a asp-action="Register">Create Account</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted fixed-bottom">
+        <div class="container mb-5">
+            &copy; @DateTime.Now.Year - Lapshop
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@model Lapshop.Models.Customer
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+</section>
+<!-- End Banner Area -->
+
+<!--================ Register Box Area =================-->
+<section class="login_box_area section_gap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="login_box_img">
+					<img class="img-fluid" src="~/Images/img/login.jpg" alt="">
+					<div class="hover">
+						<h4>Already have Account?</h4>
+						<a class="primary-btn" href="login.html">Login</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="login_form_inner">
+					<h3>Create new Account</h3>
+					<form class="row login_form" asp-action="Registration" asp-controller="Customers" method="post" id="contactForm">
+						<div class="col-md-12 form-group">
+							<input asp-for="FirstName" class="form-control" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'">
+							<span asp-validation-for="FirstName" class="text-danger"></span>
+						</div>
+						<div class="col-md-12 form-group">
+							<input asp-for="LastName" class="form-control" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'">
+							<span asp-validation-for="LastName" class="text-danger"></span>
+						</div>
+						<div class="col-md-12 form-group">
+							<input asp-for="Email" class="form-control" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+						<div class="col-md-12 form-group">
+							<input asp-for="Password" class="form-control" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+							<span asp-validation-for="Password" class="text-danger"></span>
+						</div>
+						<div class="col-md-12 form-group">
+							<input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'">
+							<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+						</div>
+						<div class="col-md-12 form-group">
+							<button type="submit" class="primary-btn">Register</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--================End Login Box Area =================-->

@@ -1,0 +1,31 @@
+﻿@model Lapshop.Models.Customer
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+</section>
+<!-- End Banner Area -->
+
+<!--================Login Box Area =================-->
+<section class="login_box_area section_gap">
+	<div class="container">
+		
+        <h3>Are you sure you want to Logout?</h3>
+        <div>
+    
+            <form asp-action="Logout">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Logout" class="btn btn-danger" /> |
+                <a asp-action="Index" asp-controller="Home">Back to page</a>
+            </form>
+        </div>
+	</div>
+</section>
+<!--================End Login Box Area =================-->
+
+
+

@@ -1,0 +1,184 @@
+﻿@model Lapshop.Controllers.PaginatedList<Lapshop.Models.Laptop>
+
+@{
+	ViewData["Title"] = "LaptopCategory";
+	Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+</section>
+<!-- End Banner Area -->
+
+<div class="search_input mt-3">
+	<div class="container">
+		<form class="d-flex justify-content-between">
+			<input type="search" name="searchTxt" class="form-control" id="search_input" placeholder="Search Here">
+		</form>
+	</div>
+</div>
+
+<div class="container mt-3">
+	<h3>All Laptops</h3>
+	<hr>
+	<div class="row">
+		<div class="col-xl-3 col-lg-4 col-md-5">
+			<!-- Filter -->
+			<div class="sidebar-filter mt-0">
+				<div class="top-filter-head">Product Filters</div>
+				<!-- Filter By Category -->
+				<div class="common-filter">
+					<div class="head">Categories</div>
+					<ul>
+						<li class="filter-list"><a asp-action="Laptops">All</a></li>
+						@foreach (var category in ViewBag.Categories)
+						{
+							<li class="filter-list">
+								<a asp-action="Laptops" asp-route-category="@category.Id">
+									<label for="apple">
+										@category.Name
+									</label>
+								</a>
+							</li>
+						}
+					</ul>
+				</div>
+				<!-- Filter By Brand -->
+				<div class="common-filter">
+					<div class="head">Top Brands</div>
+					<ul>
+						<li class="filter-list"><a asp-action="Laptops">All</a></li>
+						@foreach (var brand in ViewBag.Brands)
+						{
+							<li class="filter-list">
+								<a asp-action="Laptops" asp-route-brand="@brand.Id">
+									<label for="apple">
+										@brand.Name
+									</label>
+								</a>
+							</li>
+						}
+					</ul>
+				</div>
+				<!-- Filter By Price -->
+				<div class="common-filter">
+					<div class="head">Price</div>
+					<div class="price-range-area">
+						<div id="price-range"></div>
+						<div class="value-wrapper d-flex">
+							<div class="price">Price:</div>
+							<span>LE </span>
+							<p id="lower-value"></p>
+							<div class="to">to</div>
+							<span>LE </span>
+							<p id="upper-value"></p>
+						</div>
+
+						<button class="btn btn-warning" onclick="findPrice()">Find</button>
+					</div>
+				</div>
+			</div>
+			<!-- End Filter -->
+		</div>
+
+		<div class="col-xl-9 col-lg-8 col-md-7">
+			<!-- Top Filter Bar -->
+			<div class="filter-bar d-flex flex-wrap align-items-center">
+				<div class="sorting">
+					<select onchange="sortAction()">
+						<option value="">Sort by</option>
+						<option value="price">Price [Lower to Higher]</option>
+					</select>
+				</div>
+			</div>
+			<!-- End Top Filter Bar -->
+
+			<!-- Products Area -->
+			<section class="lattest-product-area pb-40 category-list">
+				<div class="row">
+					@foreach (var item in Model)
+					{
+						<!-- single product -->
+						<div class="col-lg-4 col-md-6">
+							<div class="single-product">
+								@if (item.Image != null)
+								{
+									<img class="img-fluid" src="~/Images/Upload/LaptopImages/@item.Id/@item.Image" style="width:140px; height: 120px">
+								}
+								else
+								{
+									<img class="img-fluid" src="~/Images/img/No_Image_Available.jpg" style="width:140px; height: 120px">
+								}
+								<div class="product-details">
+									<h6>
+										@item.Name
+									</h6>
+									<div class="price">
+										<h6>LE @item.Price</h6>
+										<h6 class="l-through">LE @(item.Price + 20)</h6>
+									</div>
+									<div class="prd-bottom">
+
+										<a href="~/Cart/AddLaptop?id=@item.Id" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
+										<a href="~/WhishList/AddLaptop?id=@item.Id" class="social-info">
+											<span class="lnr lnr-heart"></span>
+											<p class="hover-text">Wishlist</p>
+										</a>
+										<a href="~/Comparison/AddLaptopToCompare?id=@item.Id" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
+										<a href="~/Home/LaptopDetails/@item.Id" class="social-info">
+											<span class="lnr lnr-list"></span>
+											<p class="hover-text">view more</p>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End single product -->
+					}
+				</div>
+			</section>
+			<!-- End Products Area -->
+
+			<!-- Bottom Filter Bar -->
+			<div class="filter-bar d-flex flex-wrap align-items-center mb-5">
+
+				<!-- Paging -->
+				@{
+					var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+					var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+				}
+				<a asp-action="Laptops"
+				   asp-route-sortOrder="@ViewData["CurrentSort"]"
+				   asp-route-pageNumber="@(Model.PageIndex - 1)"
+				   asp-route-searchTxt="@ViewData["SearchTxt"]"
+				   asp-route-category="@ViewData["CurrentCategory"]"
+				   asp-route-brand="@ViewData["CurrentBrand"]"
+				   asp-route-minPrice="@ViewData["MinPrice"]"
+				   asp-route-maxPrice="@ViewData["MaxPrice"]"
+				   class="btn btn-outline-dark mt-3 @prevDisabled">
+					Previous
+				</a>
+
+				<a asp-action="Laptops"
+				   asp-route-sortOrder="@ViewData["CurrentSort"]"
+				   asp-route-pageNumber="@(Model.PageIndex + 1)"
+				   asp-route-searchTxt="@ViewData["SearchTxt"]"
+				   asp-route-category="@ViewData["CurrentCategory"]"
+				   asp-route-brand="@ViewData["CurrentBrand"]"
+				   asp-route-minPrice="@ViewData["MinPrice"]"
+				   asp-route-maxPrice="@ViewData["MaxPrice"]"
+				   class="btn btn-outline-dark mt-3 ml-3 @nextDisabled">
+					Next
+				</a>
+
+			</div>
+			<!-- End Bottom Filter Bar -->
+		</div>
+	</div>
+</div>

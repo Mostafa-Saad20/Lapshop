@@ -1,0 +1,132 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Admin Sidebar */
+/* **************************************** */
+.sidebar {
+    margin:0px;
+    padding: 0;
+    width: 200px;
+    background-color: #000000;
+    position: absolute;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: #FFFF;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    background-color: #555;
+    color: white;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    margin-bottom: 50px;
+}
+
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebar a {
+        float: left;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+
+/* Seller Sidebar */
+/* **************************************** */
+.seller_sidebar {
+    padding: 0;
+    width: 200px;
+    background-color: #FFFF;
+    position: absolute;
+    height: 100%;
+    overflow: auto;
+}
+
+.seller_sidebar a {
+    display: block;
+    color: #000000;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.seller_sidebar a.active {
+    background-color: #555;
+    color: white;
+}
+
+.seller_sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.seller_content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    margin-bottom: 30px;
+    background: #FFFF;
+}
+
+
+@media screen and (max-width: 700px) {
+    .seller_sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .seller_sidebar a {
+        float: left;
+    }
+
+    .seller_content {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .seller_sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+.seller_page {
+    background-color: #555;
+}

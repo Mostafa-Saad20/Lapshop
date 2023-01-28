@@ -1,0 +1,60 @@
+﻿@model Lapshop.Controllers.PaginatedList<Lapshop.Models.Accessory>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+<h4>My Accessories</h4>
+<hr>
+
+<!-- Laptop items -->
+@if(Model.Count > 0)
+{
+    foreach (var item in Model) 
+    {
+        <div class="row px-3 py-2">
+            <div class="col-md-12 card">
+              <h5 class="card-header">@item.Name</h5>
+              <div class="card-body">
+                @if (item.Description.Length > 100)
+                {
+                    <p class="card-text">@item.Description.Remove(90) ... </p>    
+                }
+                else
+                {
+                    <p class="card-text">@item.Description</p>
+                }
+                <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Accessories" class="btn btn-outline-dark">
+                    Details
+                </a>
+              </div>
+            </div>
+        </div>
+    }
+   
+    <!-- Paging -->
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    
+    <a asp-action="Index"
+        asp-route-sortOrder="@ViewData["CurrentSort"]"
+        asp-route-pageNumber="@(Model.PageIndex - 1)"
+        asp-route-currentFilter="@ViewData["CurrentFilter"]"
+        class="btn btn-outline-dark mt-3 @prevDisabled">
+        <i class="bi bi-arrow-left-circle-fill"></i>
+    </a>
+    <a asp-action="Index"
+        asp-route-sortOrder="@ViewData["CurrentSort"]"
+        asp-route-pageNumber="@(Model.PageIndex + 1)"
+        asp-route-currentFilter="@ViewData["CurrentFilter"]"
+        class="btn btn-outline-dark mt-3 @nextDisabled">
+        <i class="bi bi-arrow-right-circle-fill"></i>
+    </a>
+}
+else
+{
+    <div class="text-center">
+        <h4>You have not sold any item!</h4>
+    </div>
+}

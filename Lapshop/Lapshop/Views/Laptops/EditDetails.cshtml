@@ -1,0 +1,128 @@
+﻿@model Lapshop.Models.Laptop
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+<h4>Edit Laptop</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditDetails" asp-controller="Laptops" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control mt-2 mb-3" asp-items="ViewBag.CategoryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrandId" class="control-label"></label>
+                <select asp-for="BrandId" class="form-control mt-2 mb-3" asp-items="ViewBag.BrandId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control mt-2 mb-3" placeholder="DELL - Inspiron - XXX" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control mt-2 mb-3" placeholder="write about laptop specifications .."></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RAMSize" class="control-label"></label>
+                <input asp-for="RAMSize" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="RAMSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RAMType" class="control-label"></label>
+                <input asp-for="RAMType" class="form-control mt-2 mb-3" placeholder="DDR4" />
+                <span asp-validation-for="RAMType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProcessorBrand" class="control-label"></label>
+                <input asp-for="ProcessorBrand" class="form-control mt-2 mb-3" placeholder="Intel" />
+                <span asp-validation-for="ProcessorBrand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProcessorType" class="control-label"></label>
+                <input asp-for="ProcessorType" class="form-control mt-2 mb-3" placeholder="Core i5-XXX" />
+                <span asp-validation-for="ProcessorType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CPU" class="control-label"></label>
+                <input asp-for="CPU" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="CPU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HDD" class="control-label"></label>
+                <input asp-for="HDD" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="HDD" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input mt-2 mb-3" asp-for="HasSSD" />
+                    @Html.DisplayNameFor(model => model.HasSSD)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="SSD" class="control-label"></label>
+                <input asp-for="SSD" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="SSD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GPUBrand" class="control-label"></label>
+                <input asp-for="GPUBrand" class="form-control mt-2 mb-3" placeholder="NVIDIA - xxx" />
+                <span asp-validation-for="GPUBrand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GPU" class="control-label"></label>
+                <input asp-for="GPU" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="GPU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisplaySize" class="control-label"></label>
+                <input asp-for="DisplaySize" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="DisplaySize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OS" class="control-label"></label>
+                <input asp-for="OS" class="form-control mt-2 mb-3" placeholder="Windows" />
+                <span asp-validation-for="OS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Width" class="control-label"></label>
+                <input asp-for="Width" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="Width" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Length" class="control-label"></label>
+                <input asp-for="Length" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control mt-2 mb-3" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control mt-2 mb-3" placeholder="Black" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary mt-2 mb-3" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

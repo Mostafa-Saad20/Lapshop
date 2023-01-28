@@ -1,0 +1,296 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_HomeLayout";
+}
+
+<!-- start banner Area -->
+<section class="banner-area">
+	<div class="container">
+		<div class="row fullscreen align-items-center justify-content-start">
+			<div class="col-lg-12">
+				<div class="active-banner-slider owl-carousel">
+					<!-- single-slide -->
+					<div class="row single-slide align-items-center d-flex">
+						<div class="col-lg-5 col-md-6">
+							<div class="banner-content">
+								<h1>Welcome to <br>Our Store</h1>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+									dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+								</p>
+								<div class="add-bag d-flex align-items-center">
+									<a class="btn btn-success" href="#Categories">
+										Browse Products
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="banner-img">
+								<img class="img-fluid" src="~/Images/img/banner/295-2958538_laptop-transparent-png.png" alt="">
+							</div>
+						</div>
+					</div>
+					<!-- single-slide -->
+					<div class="row single-slide">
+						<div class="col-lg-5">
+							<div class="banner-content">
+								<h1>New Collection for <br>Gamers!</h1>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+									dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+								</p>
+								<div class="add-bag d-flex align-items-center">
+									<a class="btn btn-warning" href="~/Home/Laptops?category=1007">
+										See Gaming laptops
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="banner-img">
+								<img class="img-fluid" src="~/Images/img/banner/gaming-laptop-best-deals-banner-v1.png" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+<!-- start features Area -->
+<section class="features-area section_gap">
+	<div class="container">
+		<div class="row features-inner">
+			<!-- single features -->
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="single-features">
+					<div class="f-icon">
+						<img src="~/Images/img/features/f-icon1.png" alt="">
+					</div>
+					<h6>Free Delivery</h6>
+					<p>Free Shipping on all order</p>
+				</div>
+			</div>
+			<!-- single features -->
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="single-features">
+					<div class="f-icon">
+						<img src="~/Images/img/features/f-icon2.png" alt="">
+					</div>
+					<h6>Return Policy</h6>
+					<p>Free Shipping on all order</p>
+				</div>
+			</div>
+			<!-- single features -->
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="single-features">
+					<div class="f-icon">
+						<img src="~/Images/img/features/f-icon3.png" alt="">
+					</div>
+					<h6>24/7 Support</h6>
+					<p>Free Shipping on all order</p>
+				</div>
+			</div>
+			<!-- single features -->
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="single-features">
+					<div class="f-icon">
+						<img src="~/Images/img/features/f-icon4.png" alt="">
+					</div>
+					<h6>Secure Payment</h6>
+					<p>Free Shipping on all order</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- end features Area -->
+
+<!-- Start category Area -->
+<section class="category-area">
+	<div class="container" id="Categories">
+		<h2 class="mb-2">Explore our Categories</h2>
+		<hr>
+		<div class="row justify-content-center">
+			<div class="grid">
+				<div class="row">
+					@foreach (var category in ViewBag.Categories)
+					{
+						<div class="cell-md-4">
+							<div class="card image-header">
+								<img class="card-header" src="~/Images/Upload/LaptopCategories/@category.Image" style="height: 240px">
+								<div class="card-content p-2">
+									<h4><a href="~/Home/Laptops?category=@category.Id" class="pl-2">@category.Name</a></h4>
+								</div>
+							</div>
+						</div>
+					}
+					<div class="cell-md-4">
+						<div class="card image-header">
+							<img class="card-header" src="~/Images/img/category/Accessories.jpg" style="height: 240px">
+							<div class="card-content p-2">
+								<h4><a href="~/Home/Accessories" class="display-5 pl-2">PC Accessories</a></h4>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End category Area -->
+
+<!-- Start brand Area -->
+<section class="brand-area section_gap">
+	<div class="container">
+		<div class="row">
+			<div class="col single-img" href="#">
+				<img class="img-fluid d-block mx-auto" src="~/Images/img/brand/DellTech_Logo_Stk_Blue_Gry_rgb.png" alt="">
+			</div>
+			<div class="col single-img" href="#">
+				<img class="img-fluid d-block mx-auto" src="~/Images/img/brand/hp_og_image.jpg" alt="">
+			</div>
+			<div class="col single-img" href="#">
+				<img class="img-fluid d-block mx-auto" src="~/Images/img/brand/og_lenovo-_logo.png" alt="">
+			</div>
+			<div class="col single-img" href="#">
+				<img class="img-fluid d-block mx-auto" src="~/Images/img/brand/asus.jpg" alt="">
+			</div>
+			<div class="col single-img" href="#">
+				<img class="img-fluid d-block mx-auto" src="~/Images/img/brand/nvidia.png" alt="">
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End brand Area -->
+
+<!-- start product Area -->
+<section class="owl-carousel active-product-area section_gap">
+	<!-- single product slide -->
+	<div class="single-product-slider">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="section-title">
+						<h1>Latest Products</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+							dolore
+							magna aliqua.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!-- single product -->
+				@foreach (var product in ViewBag.LatestProducts)
+				{
+					<div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="~/Images/Upload/LaptopImages/@product.Id/@product.Image" alt="" style="height: 150px">
+							<div class="product-details">
+								<h6>
+									@product.Name
+								</h6>
+								<div class="price">
+									<h6>LE @product.Price</h6>
+								</div>
+								<div class="prd-bottom">
+
+									<a href="~/Cart/AddLaptop?id=@product.Id" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+									<a href="~/WhishList/AddLaptop?id=@product.Id" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+									<a href="~/Comparison/AddLaptopToCompare?id=@product.Id" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+									<a href="~/Home/LaptopDetails/@product.Id" class="social-info">
+										<span class="lnr lnr-list"></span>
+										<p class="hover-text">view more</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+				<!-- End Single Product -->
+			</div>
+		</div>
+	</div>
+	<!-- single product slide -->
+	<div class="single-product-slider">
+		
+	</div>
+</section>
+<!-- end product Area -->
+
+<!-- Start exclusive deal Area -->
+<section class="exclusive-deal-area mb-3">
+	<div class="container-fluid">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-6 no-padding exclusive-left">
+				<div class="row clock_sec clockdiv" id="clockdiv">
+					<div class="col-lg-12">
+						<h1>Exclusive Hot Deal Ends Soon!</h1>
+						<p>Who are in extremely love with eco friendly system.</p>
+					</div>
+					<div class="col-lg-12">
+						<div class="row clock-wrap">
+							<div class="col clockinner1 clockinner">
+								<h1 class="days">150</h1>
+								<span class="smalltext">Days</span>
+							</div>
+							<div class="col clockinner clockinner1">
+								<h1 class="hours">23</h1>
+								<span class="smalltext">Hours</span>
+							</div>
+							<div class="col clockinner clockinner1">
+								<h1 class="minutes">47</h1>
+								<span class="smalltext">Mins</span>
+							</div>
+							<div class="col clockinner clockinner1">
+								<h1 class="seconds">59</h1>
+								<span class="smalltext">Secs</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a asp-action="Laptops" class="primary-btn">Shop Now</a>
+			</div>
+			<div class="col-lg-6 no-padding exclusive-right">
+				<div class="active-exclusive-product-slider">
+					<!-- single exclusive carousel -->
+					@foreach (var product in ViewBag.LatestProducts)
+					{
+						<div class="single-exclusive-slider">
+							<img class="img-fluid" src="~/Images/Upload/LaptopImages/@product.Id/@product.Image" alt="" style="height: 150px">
+							<div class="product-details">
+								<div class="price">
+									<h6>LE @product.Price</h6>
+									<h6 class="l-through">LE @(product.Price + 250)</h6>
+								</div>
+								<h4>
+									@product.Name
+								</h4>
+								<div class="add-bag d-flex align-items-center justify-content-center">
+									<a class="add-btn" href=""><span class="ti-bag"></span></a>
+									<span class="add-text text-uppercase">Add to Bag</span>
+								</div>
+							</div>
+						</div>
+					}
+					<!-- End single exclusive carousel -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End exclusive deal Area -->

@@ -1,0 +1,24 @@
+﻿@model Lapshop.Models.LaptopImages
+
+@{
+    ViewData["Title"] = "Delete Image";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+<h4>Are you sure you want to delete this Image?</h4>
+<hr />
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Image 
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/Images/Upload/LaptopImages/@Model.LapId/@Model.ImageName" width="150" height="110">
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteImage">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>
